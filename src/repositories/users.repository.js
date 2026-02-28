@@ -21,6 +21,12 @@ class UsersRepository {
         return res.rows[0] || null;
     };
 
+    // Función solo para el admin
+    async getUsers() {
+        const res = await pool.query('select id, nombre, email, role from usuarios');
+        return res.rows || null;
+    }
+
 }
 
 module.exports = { UsersRepository }

@@ -9,7 +9,6 @@ function validarEvento ({ nombre, fecha_inicio, fecha_finalizacion }) {
         };
     }
     
-
     // validacion fechas
     let fecha_inicio1 = fecha_inicio;
     if ( fecha_inicio !== undefined ) {

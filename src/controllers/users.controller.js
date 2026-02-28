@@ -61,4 +61,13 @@ async function getMe(req, res) {
     return res.json(user);
 }
 
-module.exports = { create, loginUser, getMe }
+async function getUsers(req, res) {
+    const users = await repo.getUsers();
+
+    if ( !users ) {
+        return res.status(404).json({ error: 'Usuarios no encontrado' });
+    }
+    return res.json( users );
+}
+
+module.exports = { create, loginUser, getMe, getUsers }

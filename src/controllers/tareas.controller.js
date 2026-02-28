@@ -87,7 +87,7 @@ async function update(req, res) {
 async function changeEstado(req, res) {
     const id = Number(req.params.id);
     const user_id = req.user.id;
-    const estado = req.params.hecha;
+    const estado = req.body;
     const tarea = await repo.getById( user_id, id );
 
     if ( !tarea ) return res.status(404).json({error: 'No encontrado'});
@@ -111,5 +111,32 @@ async function remove(req, res) {
     return res.status(204).send();
 }
 
+// PARTE DE LA PAGINACION
 
-module.exports = { getAll, getNoHechas, getHechas, getById, create, update, changeEstado, remove };
+async function getTareas(req, res) {
+    try {
+        const user_id = req.user.id;
+        let { page = 1, limit = 5 } = req.query;
+        page = Number(page);
+        limit = Number(limit);
+        const offset = (page - 1) * limit;
+
+        const tareas = await repo.getTareasPaginadas(user_id, limit, offset);
+        const total = await repo.countTareas(user_id);
+        const totalPages = Math.ceil(total / limit);
+
+        return res.json({
+            page,
+            totalPages,
+            limit,
+            total,
+            data: tareas
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Error al obtener tareas' });
+    }
+}
+
+
+module.exports = { getAll, getNoHechas, getHechas, getById, create, update, changeEstado, remove, getTareas };

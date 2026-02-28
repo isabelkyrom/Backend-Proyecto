@@ -1,6 +1,7 @@
 // Librerias
 const express = require('express');
 const cors = require('cors');
+const {pool} = require('./src/db');
 
 // Routers
 const { router: tareasRouter } = require('./src/routes/tareas.routes');
@@ -45,3 +46,13 @@ app.listen(PORT, () => {
 app.get('/health', (req, res) => {
   res.json({ok:true, service:'api'})
 })
+
+app.get("/test-db", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});

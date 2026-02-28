@@ -57,6 +57,24 @@ class TareasRepository {
         return result.rows[0] || null;
     }
 
+    // PAGINACION con apoyo de ia
+
+    async getTareasPaginadas(user_id, limit, offset) {
+        const result = await pool.query(
+            'SELECT * FROM tareas WHERE user_id = $1 ORDER BY fecha_finalizacion ASC LIMIT $2 OFFSET $3',
+            [user_id, limit, offset]
+        );
+        return result.rows;
+    }
+
+    async countTareas(user_id) {
+        const result = await pool.query(
+            'SELECT COUNT(*) FROM tareas WHERE user_id = $1',
+            [user_id]
+        );
+        return Number(result.rows[0].count);
+    }
+    
 }
 
 module.exports = { TareasRepository };
