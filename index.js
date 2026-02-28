@@ -16,12 +16,16 @@ const allowed = [
   'http://localhost:3001',
 ];
 
+/*
 app.use(cors({
   origin: function (origin, cb) {
-    if (!origin) return cb(null, true); // Postman
     if (allowed.includes(origin)) return cb(null, true);
     return cb(new Error('CORS bloqueado: ' + origin));
   }
+}));
+*/
+app.use(cors({
+  origin: allowed
 }));
 
 app.use(express.json());
