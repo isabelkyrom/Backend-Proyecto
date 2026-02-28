@@ -19,6 +19,7 @@ const allowed = [
 
 app.use(cors({
   origin: function (origin, cb) {
+    if (!origin) return cb(null, true); // Postman
     if (allowed.includes(origin)) return cb(null, true);
     return cb(new Error('CORS bloqueado: ' + origin));
   }
