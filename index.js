@@ -22,10 +22,6 @@ app.use(cors({
   }
 }));
 
-app.use(cors({
-  origin: allowed
-}));
-
 app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API OK');
