@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000
 const app = express();
 
 const allowed = [
-  'https://frontend-proyecto-ten.vercel.app/login',
+  'https://frontend-proyecto-ten.vercel.app',
   'http://localhost:3001',
 ];
 
