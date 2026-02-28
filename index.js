@@ -25,11 +25,11 @@ app.use(cors({
 app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API OK');
-})
+});
 
 app.use('/tareas', tareasRouter);
 app.use('/users', usersRouter);
-app.use('/eventos', eventosRouter)
+app.use('/eventos', eventosRouter);
 
 
 app.listen(PORT, () => {
