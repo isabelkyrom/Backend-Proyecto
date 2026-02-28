@@ -15,7 +15,9 @@
   "description": "Backend del proyecto",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
   },
   "keywords": [
     "backend",
