@@ -17,12 +17,14 @@ const allowed = [
   'http://localhost:3000'
 ];
 
+/*
 app.use(cors({
   origin: function (origin, cb) {
     if (allowed.includes(origin)) return cb(null, true);
     return cb(new Error('CORS bloqueado: ' + origin));
   }
 }));
+*/
 
 app.use(cors({
   origin: allowed
