@@ -57,7 +57,7 @@ class TareasRepository {
         return result.rows[0] || null;
     }
 
-    // PAGINACION con apoyo de ia
+    // PAGINACION
 
     async getTareasPaginadas(user_id, limit, offset) {
         const result = await pool.query(
