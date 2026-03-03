@@ -13,12 +13,7 @@ const PORT = process.env.PORT || 3000
 const app = express();
 
 const allowed = [
-<<<<<<< HEAD
-  'https://frontend-proyecto-ten.vercel.app',
-  'http://localhost:3001',
-=======
   'https://frontend-proyecto-ten.vercel.app'
->>>>>>> aeb93f1 (Modificacion de direcciones permitidas a acceder)
 ];
 
 app.use(cors({
