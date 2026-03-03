@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 3000
 const app = express();
 
 const allowed = [
-  'https://frontend-proyecto-ten.vercel.app'
+  'https://frontend-proyecto-ten.vercel.app',
+  'http://localhost:3000'
 ];
 
 app.use(cors({
